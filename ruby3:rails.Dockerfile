@@ -1,19 +1,14 @@
 FROM ruby:3.2.2-slim
 
-# CHECK gem install
-RUN gem -v
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y build-essential git libvips pkg-config
 
-# CHECK rails install
-RUN #gem install rails
-#RUN rails -v
-
-# CHECK bundle install
-RUN bundle -v
+RUN gem install rails
 
 WORKDIR /usr/local/app
 
-#COPY . .
-#RUN bundle install
+COPY . .
+RUN bundle install
 
-#EXPOSE 3000
-#ENTRYPOINT rails server
+EXPOSE 3000
+ENTRYPOINT bundle exec rails server -b 0
