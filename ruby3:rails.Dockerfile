@@ -1,7 +1,7 @@
 FROM ruby:3.2.2-slim
 
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libvips pkg-config
+    apt-get install --no-install-recommends -y build-essential libvips pkg-config
 
 RUN gem install rails
 
