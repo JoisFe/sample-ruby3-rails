@@ -10,5 +10,6 @@ WORKDIR /usr/local/app
 COPY . .
 RUN bundle install
 
+# 디폴트 포트 명시(외부 포트 변경하지 않는 경우 필요없는 옵션)
 EXPOSE 3000
-ENTRYPOINT bundle exec rails server -b 0
+ENTRYPOINT rails server -b 0
