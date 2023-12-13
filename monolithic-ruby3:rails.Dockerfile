@@ -1,14 +1,9 @@
 FROM ruby:3.2.2-slim AS base
 
-RUN apt-get update -qq
-
-# install for bundle install
-RUN apt-get install --no-install-recommends -y build-essential libvips pkg-config
+RUN apt-get update -qq apt-get install --no-install-recommends -y build-essential libvips pkg-config
 RUN gem install rails
 
 ENV WORK_DIRECTORY="/usr/local/app"
-ENV BUNDLE_PATH="$WORK_DIRECTORY/.bundle"
-
 WORKDIR $WORK_DIRECTORY
 
 COPY . .
